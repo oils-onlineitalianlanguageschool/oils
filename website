@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OILS | Online Italian Language School - Tyche Agency</title>
+    <meta name="description" content="Learn Italian, Get Hired, Move to Italy. The only language school connected directly to job placement via Tyche Agency.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+    <style>
+        :root {
+            --primary: #0F172A; /* Deep Navy */
+            --secondary: #334155; /* Slate */
+            --accent: #10B981; /* Emerald Green */
+            --highlight: #EF4444; /* Soft Red */
+            --light: #F8FAFC;
+            --white: #FFFFFF;
+            --transition: all 0.3s ease;
+            --tyche-blue: #0056b3; /* Colore blu del logo Tyche */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--secondary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Utilities --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background-color: #059669;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--secondary);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- Navigation --- */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .lang-btn {
+            background: none;
+            border: 1px solid var(--secondary);
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .lang-btn.active {
+            background-color: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: var(--white);
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(16,185,129,0.1) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #CBD5E1;
+        }
+
+        /* --- The Tyche Advantage --- */
+        .tyche-section {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .tyche-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .tyche-card {
+            background: var(--light);
+            padding: 40px;
+            border-radius: 20px;
+            border-left: 5px solid var(--tyche-blue);
+        }
+
+        .feature-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-list i {
+            color: var(--accent);
+        }
+
+        .tyche-logo-container {
+            width: 100%;
+            height: 300px;
+            background: var(--tyche-blue);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .tyche-logo-container img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+
+
+        /* --- Courses --- */
+        .courses {
+            padding: 100px 0;
+            background-color: #F1F5F9;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            /* Allow grid to wrap for 2x2 layout on larger screens */
+            grid-auto-rows: 1fr;
+        }
+        
+        /* Force 2x2 layout for larger screens */
+        @media (min-width: 769px) {
+             .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+        .price-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid #E2E8F0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .price-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: var(--accent);
+        }
+
+        .price-card.featured {
+            border: 2px solid var(--primary);
+            z-index: 10;
+        }
+        
+        .tag {
+            background: var(--primary);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .price-title {
+            font-size: 1.8rem; /* Increased size */
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .price-type {
+            font-size: 1.2rem; /* Decreased size */
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .price-features {
+            list-style: none;
+            margin: 20px 0;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        .price-features li {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        /* --- Contact --- */
+        .contact {
+            padding: 100px 0;
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .contact-item a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #020617;
+            color: #64748B;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* --- Mobile --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .tyche-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; } /* Stack on mobile */
+        }
+
+        /* --- Animations --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    OILS <span>.</span>
+                </div>
+                <div class="lang-switch">
+                    <button class="lang-btn active" onclick="setLanguage('en')">EN</button>
+                    <button class="lang-btn" onclick="setLanguage('es')">ES</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1 id="hero-title">Learn Italian.<br>Get Hired.<br>Start your life in Italy.</h1>
+                <p id="hero-text">The only online language school powered by Tyche Agency. We don't just teach you the language; we connect you to your future job.</p>
+                <a href="#courses" class="btn btn-primary" id="hero-cta">View Courses</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="tyche-section">
+        <div class="container">
+            <div class="tyche-grid">
+                <div class="fade-in">
+                    <h2 class="section-title" style="text-align: left;" id="about-title">More than a school</h2>
+                    <p style="margin-bottom: 20px;" id="about-text">
+                        OILS is the educational arm of <strong>Tyche Work Agency</strong> (Italy & Albania). Our mission is to bridge the gap between learning and earning.
+                    </p>
+                    <div class="tyche-card">
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-check-circle"></i> <span id="feat-1">Direct link to Italian employers</span></li>
+                            <li><i class="fa-solid fa-laptop-file"></i> <span id="feat-2">Online job interviews facilitation</span></li>
+                            <li><i class="fa-solid fa-passport"></i> <span id="feat-3">Visa & Nulla Osta support (for eligible roles)</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <div class="tyche-logo-container">
+                        <img src="image_0.png" alt="Tyche ILMA Logo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="courses" id="courses">
+        <div class="container">
+            <h2 class="section-title" id="courses-title">Choose your Path</h2>
+            <p class="section-subtitle" id="courses-sub">From self-paced learning to direct career acceleration. Select the plan that fits your goals.</p>
+            
+            <div class="pricing-grid">
+                
+                <div class="price-card fade-in">
+                    <div>
+                        <h3 class="price-title" id="p1-title">The Self-Starter</h3>
+                        <div class="price-type">30h</div>
+                        <p style="font-size: 0.9rem; color: #64748B;" id="p1-desc">Pre-recorded Video Course</p>
+                        <ul class="price-features">
+                            <li id="p1-f1">Access to 30h of video lessons</li>
+                            <li id="p1-f2">Study at your own pace</li>
+                            <li id="p1-f3">Basic grammar & vocabulary</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="btn btn-primary" id="btn-select">Select</a>
+                </div>
+
+                <div class="price-card fade-in">
+                    <div>
+                        <h3 class="price-title" id="p2-title">The Lecture Hall</h3>
+                        <div class="price-type" id="p2-type">Group</div>
+                        <p style="font-size: 0.9rem; color: #64748B;" id="p2-desc">Large Groups (50+)</p>
+                        <ul class="price-features">
+                            <li id="p2-f1">1h Live Lesson</li>
+                            <li id="p2-f2">30 mins Q&A Session</li>
+                            <li id="p2-f3">Community learning environment</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="btn btn-primary" id="btn-select-2">Select</a>
+                </div>
+
+                <div class="price-card fade-in">
+                    <div>
+                        <h3 class="price-title" id="p3-title">The Active Class</h3>
+                        <div class="price-type" id="p3-type">Small</div>
+                        <p style="font-size: 0.9rem; color: #64748B;" id="p3-desc">Max 20 Participants</p>
+                        <ul class="price-features">
+                            <li id="p3-f1">1.5h Dynamic Lesson</li>
+                            <li id="p3-f2">Direct involvement & interaction</li>
+                            <li id="p3-f3">Dedicated attention from teacher</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="btn btn-primary" id="btn-select-3">Select</a>
+                </div>
+
+                <div class="price-card featured fade-in">
+                    <span class="tag" id="tag-best">BEST FOR JOBS</span>
+                    <div>
+                        <h3 class="price-title" id="p4-title">Career Fast-Track</h3>
+                        <div class="price-type" id="p4-type">1-on-1</div>
+                        <p style="font-size: 0.9rem; color: #64748B;" id="p4-desc">Individual VIP Focus</p>
+                        <ul class="price-features">
+                            <li id="p4-f1">1h Dedicated Personal Lesson</li>
+                            <li id="p4-f2">Memory hacks & Language mechanics</li>
+                            <li id="p4-f3"><strong>2 Job Interviews</strong> every 15h of study</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="btn btn-primary" id="btn-select-4">Select</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container fade-in">
+            <h2 id="contact-title">Start your journey today</h2>
+            <p id="contact-sub">Contact us to book your course or ask for information.</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <a href="mailto:info@tycheilma.com">info@tycheilma.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <a href="tel:+393511591719">+39 351 159 1719</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span style="font-size: 1.1rem;">Italy & Albania</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 OILS - Online Italian Language School by Tyche Agency.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Language Data
+        const translations = {
+            en: {
+                heroTitle: "Learn Italian.<br>Get Hired.<br>Start your life in Italy.",
+                heroText: "The only online language school powered by Tyche Agency. We don't just teach you the language; we connect you to your future job.",
+                heroCta: "View Courses",
+                aboutTitle: "More than a school",
+                aboutText: "OILS is the educational arm of <strong>Tyche Work Agency</strong> (Italy & Albania). Our mission is to bridge the gap between learning and earning.",
+                feat1: "Direct link to Italian employers",
+                feat2: "Online job interviews facilitation",
+                feat3: "Visa & Nulla Osta support (for eligible roles)",
+                coursesTitle: "Choose your Path",
+                coursesSub: "From self-paced learning to direct career acceleration. Select the plan that fits your goals.",
+                p1Title: "The Self-Starter",
+                p1Desc: "Pre-recorded Video Course",
+                p1f1: "Access to 30h of video lessons",
+                p1f2: "Study at your own pace",
+                p1f3: "Basic grammar & vocabulary",
+                p2Title: "The Lecture Hall",
+                p2Type: "Group",
+                p2Desc: "Large Groups (50+)",
+                p2f1: "1h Live Lesson",
+                p2f2: "30 mins Q&A Session",
+                p2f3: "Community learning environment",
+                p3Title: "The Active Class",
+                p3Type: "Small",
+                p3Desc: "Max 20 Participants",
+                p3f1: "1.5h Dynamic Lesson",
+                p3f2: "Direct involvement & interaction",
+                p3f3: "Dedicated attention from teacher",
+                p4Title: "Career Fast-Track",
+                p4Type: "1-on-1",
+                p4Desc: "Individual VIP Focus",
+                tagBest: "BEST FOR JOBS",
+                p4f1: "1h Dedicated Personal Lesson",
+                p4f2: "Memory hacks & Language mechanics",
+                p4f3: "<strong>2 Job Interviews</strong> every 15h of study",
+                btnSelect: "Select",
+                contactTitle: "Start your journey today",
+                contactSub: "Contact us to book your course or ask for information."
+            },
+            es: {
+                heroTitle: "Aprende italiano.<br>Consigue empleo.<br>Vive en Italia.",
+                heroText: "La única escuela de idiomas online impulsada por la Agencia Tyche. No solo enseñamos el idioma; te conectamos con tu futuro trabajo.",
+                heroCta: "Ver Cursos",
+                aboutTitle: "Más que una escuela",
+                aboutText: "OILS es la rama educativa de <strong>Tyche Work Agency</strong> (Italia y Albania). Nuestra misión es cerrar la brecha entre aprender y ganar dinero.",
+                feat1: "Enlace directo con empleadores italianos",
+                feat2: "Facilitación de entrevistas de trabajo online",
+                feat3: "Apoyo con Visa y Nulla Osta (para roles elegibles)",
+                coursesTitle: "Elige tu Camino",
+                coursesSub: "Desde el aprendizaje a tu ritmo hasta la aceleración profesional directa. Elige el plan que se adapte a ti.",
+                p1Title: "El Autodidacta",
+                p1Desc: "Curso en Video Pregrabado",
+                p1f1: "Acceso a 30h de lecciones en video",
+                p1f2: "Estudia a tu propio ritmo",
+                p1f3: "Gramática y vocabulario básico",
+                p2Title: "El Auditorio",
+                p2Type: "Grupo",
+                p2Desc: "Grupos Grandes (50+)",
+                p2f1: "1h de Lección en Vivo",
+                p2f2: "30 min de Preguntas y Respuestas",
+                p2f3: "Entorno de aprendizaje comunitario",
+                p3Title: "Clase Activa",
+                p3Type: "Pequeño",
+                p3Desc: "Máx 20 Participantes",
+                p3f1: "1.5h de Lección Dinámica",
+                p3f2: "Participación e interacción directa",
+                p3f3: "Atención dedicada del profesor",
+                p4Title: "Carrera Acelerada",
+                p4Type: "1 a 1",
+                p4Desc: "Enfoque VIP Individual",
+                tagBest: "MEJOR PARA EMPLEO",
+                p4f1: "1h de Lección Personal Dedicada",
+                p4f2: "Trucos de memoria y mecánica del idioma",
+                p4f3: "<strong>2 Entrevistas de Trabajo</strong> cada 15h de estudio",
+                btnSelect: "Seleccionar",
+                contactTitle: "Comienza tu viaje hoy",
+                contactSub: "Contáctanos para reservar tu curso o pedir información."
+            }
+        };
+
+        function setLanguage(lang) {
+            // Update Text
+            document.getElementById('hero-title').innerHTML = translations[lang].heroTitle;
+            document.getElementById('hero-text').innerHTML = translations[lang].heroText;
+            document.getElementById('hero-cta').innerText = translations[lang].heroCta;
+            document.getElementById('about-title').innerText = translations[lang].aboutTitle;
+            document.getElementById('about-text').innerHTML = translations[lang].aboutText;
+            document.getElementById('feat-1').innerText = translations[lang].feat1;
+            document.getElementById('feat-2').innerText = translations[lang].feat2;
+            document.getElementById('feat-3').innerText = translations[lang].feat3;
+            
+            document.getElementById('courses-title').innerText = translations[lang].coursesTitle;
+            document.getElementById('courses-sub').innerText = translations[lang].coursesSub;
+            
+            // Plan 1
+            document.getElementById('p1-title').innerText = translations[lang].p1Title;
+            document.getElementById('p1-desc').innerText = translations[lang].p1Desc;
+            document.getElementById('p1-f1').innerText = translations[lang].p1f1;
+            document.getElementById('p1-f2').innerText = translations[lang].p1f2;
+            document.getElementById('p1-f3').innerText = translations[lang].p1f3;
+            
+            // Plan 2
+            document.getElementById('p2-title').innerText = translations[lang].p2Title;
+            document.getElementById('p2-type').innerText = translations[lang].p2Type;
+            document.getElementById('p2-desc').innerText = translations[lang].p2Desc;
+            document.getElementById('p2-f1').innerText = translations[lang].p2f1;
+            document.getElementById('p2-f2').innerText = translations[lang].p2f2;
+            document.getElementById('p2-f3').innerText = translations[lang].p2f3;
+
+            // Plan 3
+            document.getElementById('p3-title').innerText = translations[lang].p3Title;
+            document.getElementById('p3-type').innerText = translations[lang].p3Type;
+            document.getElementById('p3-desc').innerText = translations[lang].p3Desc;
+            document.getElementById('p3-f1').innerText = translations[lang].p3f1;
+            document.getElementById('p3-f2').innerText = translations[lang].p3f2;
+            document.getElementById('p3-f3').innerText = translations[lang].p3f3;
+
+            // Plan 4
+            document.getElementById('p4-title').innerText = translations[lang].p4Title;
+            document.getElementById('p4-type').innerText = translations[lang].p4Type;
+            document.getElementById('p4-desc').innerText = translations[lang].p4Desc;
+            document.getElementById('tag-best').innerText = translations[lang].tagBest;
+            document.getElementById('p4-f1').innerText = translations[lang].p4f1;
+            document.getElementById('p4-f2').innerText = translations[lang].p4f2;
+            document.getElementById('p4-f3').innerHTML = translations[lang].p4f3;
+
+            // Common Buttons
+            const buttons = document.querySelectorAll('[id^="btn-select"]');
+            buttons.forEach(btn => btn.innerText = translations[lang].btnSelect);
+
+            document.getElementById('contact-title').innerText = translations[lang].contactTitle;
+            document.getElementById('contact-sub').innerText = translations[lang].contactSub;
+
+            // Toggle Active Button
+            const btns = document.querySelectorAll('.lang-btn');
+            btns.forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // Animation on Scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+    </script>
+</body>
+</html>
